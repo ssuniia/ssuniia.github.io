@@ -3,68 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💙 Признание</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>💙 Любовь</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e6f3ff 0%, #f0e6ff 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        img {
+            max-width: 200px;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 15px;
+        }
+        
+        h1 {
+            color: #6b9ebe;
+            margin: 20px 0;
+            font-size: 32px;
+        }
+        
+        p {
+            color: #8db5d1;
+            font-size: 18px;
+            margin: 15px 0;
+        }
+        
+        .counter {
+            font-size: 64px;
+            font-weight: bold;
+            color: #5b7fa5;
+            margin: 20px 0;
+        }
+        
+        button {
+            padding: 12px 30px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #a8d5ff 0%, #b8d5e8 100%);
+            color: #5b7fa5;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(168, 213, 255, 0.4);
+        }
+        
+        .btn-no {
+            background: linear-gradient(135deg, #ffc8dd 0%, #ffe0ed 100%);
+            color: #d978a0;
+        }
+    </style>
 </head>
 <body>
-    <!-- Фоновая музыка -->
-    <audio id="bgMusic" loop>
+    <audio id="music" loop style="display:none;">
         <source src="https://assets.mixkit.co/active_storage/musics/44-44-preview.mp3" type="audio/mpeg">
     </audio>
-
-    <!-- Контейнер страниц -->
-    <div class="pages-container">
+    
+    <div class="container">
         <!-- Страница 1 -->
-        <div class="page page-1 active">
-            <div class="page-content">
-                <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=300" alt="cute cat" class="cute-cat">
-                <div class="text-block">
-                    <p class="bold-text">любимый</p>
-                    <p class="small-text">это вновь я🥰</p>
-                </div>
-                <button class="btn btn-primary" onclick="goToPage(2)">что там?</button>
-            </div>
+        <div class="page active" id="page1">
+            <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=300" alt="кот">
+            <h1>любимый</h1>
+            <p>это вновь я 🥰</p>
+            <button onclick="nextPage()">что там?</button>
         </div>
-
+        
         <!-- Страница 2 -->
-        <div class="page page-2">
-            <div class="page-content">
-                <h2>мы с тобой вместе уже</h2>
-                <div class="days-counter">270 <span>дней</span></div>
-                <button class="btn btn-primary" onclick="goToPage(3)">ого</button>
-            </div>
+        <div class="page" id="page2">
+            <h1>мы вместе уже</h1>
+            <div class="counter">270<br><span style="font-size: 24px; color: #8db5d1;">дней</span></div>
+            <button onclick="nextPage()">ого</button>
         </div>
-
+        
         <!-- Страница 3 -->
-        <div class="page page-3">
-            <div class="page-content">
-                <h2 class="fade-in">все 270 дней ты делаешь мою жизнь лучше</h2>
-                <div class="hearts-container"></div>
-                <button class="btn btn-primary" onclick="goToPage(4)">клас</button>
-            </div>
+        <div class="page" id="page3">
+            <h1>все 270 дней<br>ты делаешь мою<br>жизнь лучше</h1>
+            <p>❤️ ❤️ ❤️</p>
+            <button onclick="nextPage()">клас</button>
         </div>
-
+        
         <!-- Страница 4 -->
-        <div class="page page-4">
-            <div class="page-content">
-                <h2>приглашаю тебя на свидание</h2>
-                <p class="date-info">09.07.2026 в 20:00</p>
-                <div class="button-group">
-                    <button class="btn btn-yes" onclick="goToPage(5)">я согласен</button>
-                    <button class="btn btn-no" id="noBtn">не хочу</button>
-                </div>
-            </div>
+        <div class="page" id="page4">
+            <h1>приглашаю тебя<br>на свидание</h1>
+            <p>09.07.2026 в 20:00</p>
+            <button onclick="nextPage()">я согласен</button>
+            <button class="btn-no" onclick="alert('Ну давай! 💙')">не хочу</button>
         </div>
-
+        
         <!-- Страница 5 -->
-        <div class="page page-5">
-            <div class="page-content">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240' width='200' height='240'%3E%3C!-- Head --%3E%3Ccircle cx='100' cy='80' r='60' fill='white' stroke='black' stroke-width='4'/%3E%3C!-- Left Eye --%3E%3Ccircle cx='75' cy='70' r='20' fill='black'/%3E%3Ccircle cx='79' cy='66' r='6' fill='white'/%3E%3Cpath d='M 70 85 Q 75 88 80 85' stroke='%23FFB6D9' stroke-width='3' fill='none'/%3E%3C!-- Right Eye --%3E%3Ccircle cx='125' cy='70' r='20' fill='black'/%3E%3Ccircle cx='129' cy='66' r='6' fill='white'/%3E%3Cpath d='M 120 85 Q 125 88 130 85' stroke='%23FFB6D9' stroke-width='3' fill='none'/%3E%3C!-- Heart in left eye --%3E%3Cpath d='M 70 75 L 75 70 L 80 75 Q 75 80 70 75' fill='%23FFB6D9'/%3E%3C!-- Heart in right eye --%3E%3Cpath d='M 120 75 L 125 70 L 130 75 Q 125 80 120 75' fill='%23FFB6D9'/%3E%3C!-- Left Wing --%3E%3Cellipse cx='30' cy='90' rx='25' ry='35' fill='%23FFD9E8' stroke='%236B4C7A' stroke-width='3'/%3E%3C!-- Right Wing --%3E%3Cellipse cx='170' cy='90' rx='25' ry='35' fill='%23FFD9E8' stroke='%236B4C7A' stroke-width='3'/%3E%3C!-- Body --%3E%3Crect x='75' y='130' width='50' height='60' rx='10' fill='white' stroke='black' stroke-width='4'/%3E%3C!-- Left Arm --%3E%3Crect x='20' y='140' width='55' height='20' rx='10' fill='white' stroke='black' stroke-width='4'/%3E%3C!-- Right Arm --%3E%3Crect x='125' y='140' width='55' height='20' rx='10' fill='white' stroke='black' stroke-width='4'/%3E%3C!-- Left Leg --%3E%3Crect x='75' y='190' width='15' height='40' rx='7' fill='white' stroke='black' stroke-width='4'/%3E%3C!-- Right Leg --%3E%3Crect x='110' y='190' width='15' height='40' rx='7' fill='white' stroke='black' stroke-width='4'/%3E%3C!-- Heart above --%3E%3Cpath d='M 160 25 L 165 20 L 170 25 Q 165 30 160 25' fill='%23FFB6D9'/%3E%3C/svg%3E" alt="happy character" class="happy-meme">
-                <p class="final-text">ура!! Буду ждать тебя в дискорде</p>
-            </div>
+        <div class="page" id="page5">
+            <p style="font-size: 80px;">🐱</p>
+            <h1>ура!!</h1>
+            <p>Буду ждать тебя в дискорде</p>
         </div>
     </div>
-
-    <script src="script.js"></script>
+    
+    <script>
+        let currentPage = 1;
+        
+        document.addEventListener('click', () => {
+            const music = document.getElementById('music');
+            if (music.paused) {
+                music.volume = 0.3;
+                music.play().catch(e => console.log('Музыка:', e));
+            }
+        });
+        
+        function nextPage() {
+            document.getElementById('page' + currentPage).classList.remove('active');
+            currentPage++;
+            document.getElementById('page' + currentPage).classList.add('active');
+        }
+    </script>
 </body>
 </html>
