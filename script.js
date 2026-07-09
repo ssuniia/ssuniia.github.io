@@ -24,23 +24,24 @@ function goToPage(pageNum) {
     }
 }
 
-// Генерация сердечек
+// Генерация сердечек по всей странице - медленная анимация
 function generateHearts() {
     const container = document.querySelector('.hearts-container');
     container.innerHTML = '';
     
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 20; i++) {
         const heart = document.createElement('div');
         heart.className = 'heart';
         heart.textContent = '❤️';
         
-        const randomX = Math.random() * 200 - 100;
-        const randomDelay = Math.random() * 0.5;
-        const randomDuration = 2.5 + Math.random() * 1;
+        const randomX = Math.random() * 400 - 200;
+        const randomLeft = Math.random() * window.innerWidth;
+        const randomDelay = Math.random() * 1.5;
+        const randomDuration = 7 + Math.random() * 3; // 7-10 секунд для медленной анимации
         
         heart.style.setProperty('--tx', randomX + 'px');
-        heart.style.left = '150px';
-        heart.style.top = '150px';
+        heart.style.left = randomLeft + 'px';
+        heart.style.top = window.innerHeight + 'px';
         heart.style.animationDelay = randomDelay + 's';
         heart.style.animationDuration = randomDuration + 's';
         
@@ -50,19 +51,21 @@ function generateHearts() {
 
 // Поведение кнопки "не хочу" - убегает
 const noBtn = document.getElementById('noBtn');
-noBtn.addEventListener('mouseover', function() {
-    const randomX = Math.random() * 300 - 150;
-    const randomY = Math.random() * 200 - 100;
-    
-    noBtn.style.position = 'relative';
-    noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
-    noBtn.style.transition = 'transform 0.3s ease-out';
-});
+if (noBtn) {
+    noBtn.addEventListener('mouseover', function() {
+        const randomX = Math.random() * 300 - 150;
+        const randomY = Math.random() * 200 - 100;
+        
+        noBtn.style.position = 'relative';
+        noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        noBtn.style.transition = 'transform 0.3s ease-out';
+    });
 
-noBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    return false;
-});
+    noBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        return false;
+    });
+}
 
 // Инициализация первой страницы
 window.addEventListener('load', function() {
