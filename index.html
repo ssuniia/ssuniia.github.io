@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💙 Признание</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Фоновая музыка -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Контейнер страниц -->
+    <div class="pages-container">
+        <!-- Страница 1 -->
+        <div class="page page-1 active">
+            <div class="page-content">
+                <div class="dancing-dog">
+                    <span>🐕</span>
+                </div>
+                <div class="text-block">
+                    <p class="bold-text">любимый</p>
+                    <p class="small-text">это вновь я🥰</p>
+                </div>
+                <button class="btn btn-primary" onclick="goToPage(2)">что там?</button>
+            </div>
+        </div>
+
+        <!-- Страница 2 -->
+        <div class="page page-2">
+            <div class="page-content">
+                <h2>мы с тобой вместе уже</h2>
+                <div class="days-counter">270 <span>дней</span></div>
+                <button class="btn btn-primary" onclick="goToPage(3)">ого</button>
+            </div>
+        </div>
+
+        <!-- Страница 3 -->
+        <div class="page page-3">
+            <div class="page-content">
+                <h2 class="fade-in">все 270 дней ты делаешь мою жизнь лучше</h2>
+                <div class="hearts-container"></div>
+                <button class="btn btn-primary" onclick="goToPage(4)">клас</button>
+            </div>
+        </div>
+
+        <!-- Страница 4 -->
+        <div class="page page-4">
+            <div class="page-content">
+                <h2>приглашаю тебя на свидание</h2>
+                <p class="date-info">09.07.2026 в 20:00</p>
+                <div class="button-group">
+                    <button class="btn btn-yes" onclick="goToPage(5)">я согласен</button>
+                    <button class="btn btn-no" id="noBtn">не хочу</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Страница 5 -->
+        <div class="page page-5">
+            <div class="page-content">
+                <div class="jumping-cat">🐱</div>
+                <p class="meme-text">happy happy meme</p>
+                <p class="final-text">ура!! Буду ждать тебя в дискорде</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
